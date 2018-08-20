@@ -32,6 +32,9 @@ class ValueHelper extends TypeHelper {
     if (targetType.isUndefined) {
       return null;
     }
+    if(targetType.element.name == 'String'){
+      return '($expression)${context.nullable ? '?' : ''}.toString()';
+    }
     if (targetType.isDynamic || targetType.isObject) {
       // just return it as-is. We'll hope it's safe.
       return expression;
